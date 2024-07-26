@@ -1,6 +1,8 @@
 namespace CleanArchitecture.Domain.Abstractions;
 
-public class IUnityOfWork
+public interface IUnityOfWork
 {
-    
+    IMemberRepository MemberRepository { get; }
+    Task Commit();
+    Task Rollback();
 }

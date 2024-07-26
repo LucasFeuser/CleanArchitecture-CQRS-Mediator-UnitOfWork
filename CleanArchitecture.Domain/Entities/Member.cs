@@ -7,7 +7,7 @@ public class Member : BaseEntity
     protected Member()
     { }
 
-    public Member(int id, string? name, string? email, string? about, DateOnly birthDate, int age, bool isActive, decimal salary)
+    public Member(int id, string? name, string? email, string? about, DateTime birthDate, int age, bool isActive, decimal salary)
     {
         Id = id;
         Age = age;
@@ -22,7 +22,7 @@ public class Member : BaseEntity
     public string? Name { get; protected set; }
     public string? Email { get; protected set; }
     public string? About { get; protected set; }
-    public DateOnly BirthDate  { get; protected set; }
+    public DateTime BirthDate  { get; protected set; }
     public int Age  { get; protected set; }
     public bool IsActive  { get; protected set; }
     public decimal Salary  { get; protected set; }
