@@ -1,4 +1,4 @@
-# Tecnologies uses in this project:
+# Tecnologies used in this project:
 ----
 * CleanArchitecture
 * CQRS
