@@ -3,35 +3,32 @@ using CleanArchitecture.Infrastructure.Context;
 
 namespace CleanArchitecture.Infrastructure.Repositories;
 
-public sealed class UnityOfWork : IUnityOfWork, IDisposable
+public sealed class UnityOfWork(AppDbContext context) : IUnityOfWork, IDisposable
 {
     private IMemberRepository _memberRepository;
-    private readonly AppDbContext _context;
-
-    public UnityOfWork(AppDbContext context)
-    {
-        _context = context;
-    }
 
     public IMemberRepository MemberRepository
     {
         get
         {
-            return _memberRepository = new MemberRepository(_context);
+            return _memberRepository = new MemberRepository(context);
         }
     }
 
     public async Task Commit()
     {
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
     }
 
-    private bool _disposed = false;
+    private bool  _disposed = false;
 
+    ~UnityOfWork() =>
+        Dispose();
+    
     public void Dispose()
     {
         if (!_disposed)
-            _context.Dispose();
+            context.Dispose();
         GC.SuppressFinalize(this);
     }
     

@@ -9,12 +9,10 @@ namespace CleanArchitecture.API.Controllers.Base;
 [ApiController]
 public abstract class BaseController : ControllerBase
 {
-
     protected readonly IUnityOfWork Uow;
-    
+
     protected BaseController(IUnityOfWork uow)
     {
         Uow = uow;
     }
-    
 }

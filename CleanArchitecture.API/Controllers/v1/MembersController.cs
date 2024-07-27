@@ -2,12 +2,13 @@ using CleanArchitecture.API.Controllers.Base;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
+using log4net;
 
 namespace CleanArchitecture.API.Controllers.v1;
 
 public class MembersController : BaseController
 {
-    public MembersController(IUnityOfWork uoW) : base(uoW)
+    public MembersController(IUnityOfWork uow) : base(uow)
     { }
 
     [HttpGet("Todos")]
@@ -27,16 +28,20 @@ public class MembersController : BaseController
     [HttpPost("Adicionar")]
     public async Task<IActionResult> AddMember([FromBody] Member member)
     {
+        Member result;
         try
         {
-            var result = await Uow.MemberRepository.AddEntity(member);
-            await Uow.Commit();
-            return Ok(result);
+            result = await Uow.MemberRepository.AddEntity(member);
         }
         catch (Exception)
         {
             await Uow.Rollback();
             throw;
         }
+        
+        await Uow.Commit();
+        return Ok(result);
     }
+
+   
 }
