@@ -1,18 +1,17 @@
-using Asp.Versioning;
 using CleanArchitecture.Domain.Abstractions;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.API.Controllers.Base;
 
-[ApiVersion("1.0")]
 [Route("api/v1/[controller]")]
 [ApiController]
 public abstract class BaseController : ControllerBase
 {
-    protected readonly IUnityOfWork Uow;
+    protected readonly IMediator _mediator;
 
-    protected BaseController(IUnityOfWork uow)
+    protected BaseController(IMediator mediator)
     {
-        Uow = uow;
+        _mediator = mediator;
     }
 }

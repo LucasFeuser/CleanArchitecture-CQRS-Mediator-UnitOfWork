@@ -10,4 +10,12 @@
       <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Members\Queries\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="12.4.0" />
+    </ItemGroup>
+
 </Project>

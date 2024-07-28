@@ -18,6 +18,10 @@ public static class DependencyInjection
             opt.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                 ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection"))));
 
+        services.AddMediatR(cfg =>
+            cfg.RegisterServicesFromAssembly(AppDomain.CurrentDomain.Load("CleanArchitecture.Application")));
+
+        
         return services;
     }
 }

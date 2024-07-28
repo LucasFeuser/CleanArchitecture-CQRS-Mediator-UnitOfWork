@@ -7,6 +7,17 @@ public class Member : BaseEntity
     protected Member()
     { }
 
+    public Member(string? name, string? email, string? about, DateTime birthDate, int age, bool isActive, decimal salary)
+    {
+        Name = name;
+        Email = email;
+        About = about;
+        BirthDate = birthDate;
+        Age = age;
+        IsActive = isActive;
+        Salary = salary;
+    }
+
     public Member(int id, string? name, string? email, string? about, DateTime birthDate, int age, bool isActive, decimal salary)
     {
         Id = id;
