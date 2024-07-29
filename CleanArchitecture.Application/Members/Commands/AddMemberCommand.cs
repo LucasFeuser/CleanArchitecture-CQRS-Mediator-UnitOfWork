@@ -16,5 +16,4 @@ public class AddMemberCommand : MemberCommandBase
         IsActive = isActive;
         Salary = salary;
     }
-    
 }

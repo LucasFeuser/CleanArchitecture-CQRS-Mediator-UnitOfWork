@@ -1,6 +1,5 @@
-using CleanArchitecture.Domain.Abstractions;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
 
 namespace CleanArchitecture.API.Controllers.Base;
 
@@ -8,10 +7,10 @@ namespace CleanArchitecture.API.Controllers.Base;
 [ApiController]
 public abstract class BaseController : ControllerBase
 {
-    protected readonly IMediator _mediator;
+    protected readonly IMediator Mediator;
 
     protected BaseController(IMediator mediator)
     {
-        _mediator = mediator;
+        Mediator = mediator;
     }
 }

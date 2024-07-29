@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using CleanArchitecture.Domain.Entities.Base;
 
 namespace CleanArchitecture.Domain.Entities;
@@ -7,15 +8,16 @@ public class Member : BaseEntity
     protected Member()
     { }
 
+    [JsonConstructor]
     public Member(string? name, string? email, string? about, DateTime birthDate, int age, bool isActive, decimal salary)
     {
+        Age = age;
         Name = name;
         Email = email;
         About = about;
-        BirthDate = birthDate;
-        Age = age;
-        IsActive = isActive;
         Salary = salary;
+        IsActive = isActive;
+        BirthDate = birthDate;
     }
 
     public Member(int id, string? name, string? email, string? about, DateTime birthDate, int age, bool isActive, decimal salary)

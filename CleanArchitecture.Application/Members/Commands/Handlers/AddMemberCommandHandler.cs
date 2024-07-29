@@ -1,11 +1,11 @@
 using CleanArchitecture.Application.Members.Commands.Views;
-using CleanArchitecture.CrossCutting.Common.CQRS;
+using CleanArchitecture.CrossCutting.Common.CQRS.Command;
 using CleanArchitecture.Domain.Abstractions;
 using CleanArchitecture.Domain.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
 
-namespace CleanArchitecture.Application.Members.Commands.Handler;
+namespace CleanArchitecture.Application.Members.Commands.Handlers;
 
 public class AddMemberCommandHandler : CommandBase, IRequestHandler<AddMemberCommand, IActionResult>
 {
@@ -29,10 +29,9 @@ public class AddMemberCommandHandler : CommandBase, IRequestHandler<AddMemberCom
 
             return ReturnOk(new AddMemberCommandView(newMember.Name));
         }
-        catch (Exception e)
+        catch (Exception)
         {
             await _uow.Rollback();
-            Console.WriteLine(e);
             throw;
         }
     }

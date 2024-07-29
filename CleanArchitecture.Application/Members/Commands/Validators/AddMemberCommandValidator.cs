@@ -1,4 +1,3 @@
-using System.Data;
 using FluentValidation;
 
 namespace CleanArchitecture.Application.Members.Commands.Validators;
@@ -23,7 +22,6 @@ public class AddMemberCommandValidator : AbstractValidator<AddMemberCommand>
         RuleFor(x => x.Salary)
             .Must((x, d) => IsValidDecimalValue(x.Salary))
             .WithMessage("Salario deve ser maio que 0");
-        
     }
 
     private bool IsValidDecimalValue(decimal d)

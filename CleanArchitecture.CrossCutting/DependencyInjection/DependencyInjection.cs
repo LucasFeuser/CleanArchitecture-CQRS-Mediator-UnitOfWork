@@ -1,5 +1,7 @@
 using System.Data;
 using MySqlConnector;
+using FluentValidation;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using CleanArchitecture.Domain.Abstractions;
@@ -26,13 +28,18 @@ namespace CleanArchitecture.CrossCutting.DependencyInjection
 
             services.AddTransient<IDbConnection>(_ => new MySqlConnection(connectionString));
 
+            const string assembly = "CleanArchitecture.Application";
+            var handlers = AppDomain.CurrentDomain.Load(assembly);
+            
             services.AddMediatR(cfg =>
                 {
-                    cfg.RegisterServicesFromAssembly(AppDomain.CurrentDomain.Load("CleanArchitecture.Application"));
+                    cfg.RegisterServicesFromAssembly(handlers);
                     cfg.AddOpenBehavior(typeof(ValidatorBehaviour<,>));
                 }
             );
-
+            services.AddValidatorsFromAssembly(Assembly.Load(assembly));
+            
+            
             return services;
         }
     }

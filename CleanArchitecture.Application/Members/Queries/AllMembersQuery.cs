@@ -1,6 +1,5 @@
-using CleanArchitecture.Domain.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using MediatR;
 
 namespace CleanArchitecture.Application.Members.Queries;
 
