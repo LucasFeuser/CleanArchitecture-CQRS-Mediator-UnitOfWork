@@ -3,5 +3,5 @@ using CleanArchitecture.Domain.Entities;
 
 namespace CleanArchitecture.Domain.Abstractions;
 
-public interface IMemberRepository : IBaseRepository<Member>
+public interface IMemberDappRepository : IBaseReadRepository<Member>
 { }

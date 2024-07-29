@@ -5,13 +5,13 @@ namespace CleanArchitecture.Infrastructure.Repositories;
 
 public sealed class UnityOfWork(AppDbContext context) : IUnityOfWork, IDisposable
 {
-    private IMemberRepository _memberRepository;
+    private IMemberEfRepository _memberEfRepository;
 
-    public IMemberRepository MemberRepository
+    public IMemberEfRepository MemberEfRepository
     {
         get
         {
-            return _memberRepository = new MemberRepository(context);
+            return _memberEfRepository = new MemberEfRepository(context);
         }
     }
 

@@ -2,7 +2,7 @@ namespace CleanArchitecture.Domain.Abstractions;
 
 public interface IUnityOfWork
 {
-    IMemberRepository MemberRepository { get; }
+    IMemberEfRepository MemberEfRepository { get; }
     Task Commit();
     Task Rollback();
 }

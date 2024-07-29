@@ -7,15 +7,23 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CleanArchitecture.CrossCutting\CleanArchitecture.CrossCutting.csproj" />
       <ProjectReference Include="..\CleanArchitecture.Domain\CleanArchitecture.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Members\Queries\" />
+      <PackageReference Include="FluentValidation" Version="11.9.2" />
+      <PackageReference Include="MediatR" Version="12.4.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="12.4.0" />
+      <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions">
+        <HintPath>..\..\..\..\..\Program Files\dotnet\shared\Microsoft.AspNetCore.App\8.0.6\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="DTOs\" />
     </ItemGroup>
 
 </Project>
